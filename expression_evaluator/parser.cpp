@@ -123,7 +123,7 @@ std::shared_ptr<expr_node> parse(itl::list<token_t> token_stream)
 
     if (it == token_stream.end() || it->type != token_type::END_OF_EXPR)
     {
-        throw std::runtime_error("Syntax Error!!! Invalid Boolean Expression! Bat nakain yung END token!!!!!!!");
+        throw std::runtime_error("Syntax Error!!! Invalid Boolean Expression! nakain ba yung end token? o walang operator?!!!!!!!");
     }
 
     return root;
