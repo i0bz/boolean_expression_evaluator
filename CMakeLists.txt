@@ -9,10 +9,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory(itl_containers)
 
-add_executable(boolean_simplifier main.cpp expression_evaluator/tokenizer.cpp)
+add_executable(boolean_simplifier main.cpp expression_evaluator/tokenizer.cpp expression_evaluator/parser.cpp)
 
-target_link_libraries(boolean_simplifier PRIVATE i0bz_templatic_library)
 target_include_directories(boolean_simplifier PRIVATE expression_evaluator)
+target_link_libraries(boolean_simplifier PRIVATE i0bz_templatic_library)
 
 
 include(CTest)

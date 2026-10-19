@@ -1,6 +1,9 @@
 #pragma once
-#include <string>
+
 import iobz_containers;
+
+#include <memory>
+#include <string>
 
 enum class token_type
 {
@@ -13,12 +16,38 @@ enum class token_type
     END_OF_EXPR
 };
 
-struct token
+struct token_t
 {
     token_type type;
     std::string val;
 };
 
-itl::list<token> tokenize(const std::string& expression);
+enum class node_type
+{
+    VAR,
+    NOT,
+    AND,
+    OR
+};
 
-void bracket_matcher(const itl::list<token> tokenize);
+struct expr_node
+{
+    node_type type;
+    std::string value;
+    std::shared_ptr<expr_node> left;
+    std::shared_ptr<expr_node> right;
+
+    expr_node(
+        node_type type,
+        std::string value = "",
+        std::shared_ptr<expr_node> left = nullptr,
+        std::shared_ptr<expr_node> right = nullptr)
+        : type(type), value(std::move(value)), left(std::move(left)), right(std::move(right))
+    {
+    }
+};
+
+itl::list<token_t> tokenize(const std::string& expression);
+std::shared_ptr<expr_node> parse(itl::list<token_t> token_stream);
+
+
