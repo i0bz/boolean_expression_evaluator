@@ -49,4 +49,5 @@ bool evaluate(expr_node& node, itl::unordered_map<std::string, bool>& var_mappin
 itl::list<token_t> tokenize(const std::string& expression);
 std::shared_ptr<expr_node> parse(itl::list<token_t> token_stream);
 
+inline itl::set<std::string> variables;
 
