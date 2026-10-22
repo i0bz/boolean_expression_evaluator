@@ -6,6 +6,15 @@ bool evaluate(expr_node& node, itl::unordered_map<std::string, bool>& var_mappin
     switch (node.type)
     {
         case node_type::VAR:
+            if (node.value == "1")
+            {
+                return 1;
+            }
+            else if (node.value == "0")
+            {
+                return 0;
+            }
+
             return var_mappings[node.value];
             break;
 

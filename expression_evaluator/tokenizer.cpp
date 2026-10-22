@@ -7,7 +7,7 @@
 itl::list<token_t> tokenize(const std::string& expression)
 {
     itl::list<token_t> token_stream;
-    std::string variable_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    std::string variable_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ10";
     variables.clear();
 
     for (char x : expression)
@@ -19,6 +19,10 @@ itl::list<token_t> tokenize(const std::string& expression)
         if (variable_chars.find(x) != std::string::npos)
         {
             token_stream.push_back(token_t{token_type::VAR, std::string(1,x)});
+            if (x == '1' || x == '0')
+            {
+                continue;
+            }
             variables.insert(std::string(1,x));
             continue;
         }
